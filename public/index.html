@@ -1,0 +1,15 @@
+
+<script src="/socket.io/socket.io.js"></script>
+<script>
+    var socket = io("https://websocket.btcchina.com/")
+    socket.emit('subscribe','marketdata_cnybtc')
+    socket.on('connect',function () {
+        socket.on('ticker',function (data) {
+            console.log(data)
+            console.log(data.ticker.high)
+            console.log(data.ticker.low)
+            console.log(data.ticker.buy)
+            console.log(data.ticker.sell)
+        })
+    })
+</script>
